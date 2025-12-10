@@ -1,26 +1,172 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core Colors */
+  --background: #0B0B0B;
+  --surface-primary: #161616;
+  --surface-secondary: #222222;
+  --surface-tertiary: #2E2E2E;
+
+  /* Text Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #BDBDBD;
+  --text-disabled: #7A7A7A;
+  --text-hint: #6E6E6E;
+
+  /* Borders & Dividers */
+  --border-standard: #3A3A3A;
+  --border-light: #4A4A4A;
+
+  /* Functional Colors */
+  --success: #81C784;     /* softened for dark mode */
+  --warning: #FFB970;
+  --error: #E57373;
+  --info: #64B5F6;
+
+  /* State Colors */
+  --hover: #1E1E1E;
+  --pressed: #2A2A2A;
+  --selected: #3D3D3D;
+  --disabled-surface: #16161680;
+
+  /* Button Colors */
+  --button-primary-bg: #4FA8FF;
+  --button-primary-text: #FFFFFF;
+  --button-secondary-bg: #222222;
+  --button-secondary-text: #FFFFFF;
+  --button-outline-border: #4A4A4A;
+  --button-outline-text: #6FC2FF;
+
+  /* Input & Card Colors */
+  --input-border: #3A3A3A;
+  --input-background: #161616;
+  --card-background: #121212;
+  --form-background: #141414;
+
+  /* Legacy support */
+  --foreground: var(--text-primary);
 }
+
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface-primary: var(--surface-primary);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-tertiary: var(--surface-tertiary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-standard: var(--border-standard);
+  --color-hover: var(--hover);
+  --color-pressed: var(--pressed);
+  --color-selected: var(--selected);
+  --font-sans: 'Outfit', sans-serif;
+  --font-sans: 'Poppins', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Override for light mode if desired */
+    --background: #0b0b0b;
+    --text-primary: #f5f5f5;
+    --foreground: #f5f5f5;
+    /* Add other light mode overrides here if needed */
   }
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Typography - Headings use Outfit, Paragraphs use Poppins */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  /* color: #CCCCCC; */
+}
+
+
+h1 {
+  font-size: 100px;
+}
+
+h2 {
+  font-size: 80px;
+}
+
+h3 {
+  font-size: 60px;
+}
+
+h4 {
+  font-size: 42px;
+}
+
+h5 {
+  font-size: 28px;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+p, span, a, li, div {
+  letter-spacing: 1px;
+}
+
+p, span, div, a, li, td, th {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+:root {
+  --font-figtree: 'Figtree', sans-serif;
+}
+
+:root {
+  --font-satisfy: 'Satisfy', cursive;
+}
+:root {
+  --font-outfit: 'Outfit', sans-serif;
+}
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+}
+:root {
+  --font-lato: 'Lato', sans-serif;
+}
+:root {
+  --font-lusitana: 'Lusitana', serif;
+}
+
+
+.font-afacad {
+  font-family: var(--font-afacad);
+  font-weight: 500;
+}
+.font-figtree {
+  font-family: var(--font-figtree);
+  font-weight: 500;
+}
+.font-satisfy {
+  font-family: var(--font-satisfy);
+}
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+}
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+.font-lato {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+.font-lusitana {
+  font-family: 'Lusitana', serif;
+  font-weight: 400;
 }
