@@ -6,7 +6,7 @@ import React from 'react';
 export default function Footer() {
   return (
     <footer className="bg-[#070707] text-gray-200 border-t border-[rgba(224,207,207,0.03)] mt-12">
-      <div className="container max-w-6xl mx-auto py-10 px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+      <div className="container max-w-7xl mx-auto py-10 px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         {/* Brand & tagline */}
         <div className="flex flex-col gap-3 ">
           <Link href="/" aria-label="ShopIt home" className="inline-flex items-center gap-3">
@@ -77,7 +77,7 @@ export default function Footer() {
 
       <div className="border-t border-[rgba(224,207,207,0.03)] mt-6">
         <div className="container max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-500">© {new Date().getFullYear()} ShopIt — All rights reserved.</p>
+          <p className="text-xs text-gray-500">© {new Date().getFullYear()} ShopIt - All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link href="/terms" className="text-xs text-gray-400 hover:underline">Terms</Link>
             <Link href="/privacy" className="text-xs text-gray-400 hover:underline">Privacy</Link>

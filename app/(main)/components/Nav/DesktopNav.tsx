@@ -1,8 +1,10 @@
 // components/Nav/DesktopNav.tsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import ImageSearchModal from "@/app/(main)/components/search/ImageSearchModal";
+import VoiceSearchModal from "@/app/(main)/components/search/VoiceSearchModal";
 
 export interface DesktopNavProps {
   navStyle?: (visible: boolean) => React.CSSProperties;
@@ -11,23 +13,27 @@ export interface DesktopNavProps {
   setQuery: (q: string) => void;
 }
 
+
 const DesktopNav: React.FC<DesktopNavProps> = ({
   navStyle = () => ({}),
   showNav = true,
   query,
   setQuery,
 }) => {
+
+const [openImage, setOpenImage] = useState(false);
+const [openVoice, setOpenVoice] = useState(false);
   return (
     <nav
       style={navStyle(showNav)}
       className="hidden md:block fixed left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-sm shadow-lg"
       aria-hidden={!showNav}
     >
-      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto py-3 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center">
             <h5 className="text-2xl font-lusitana font-semibold text-white select-none">ShopIt</h5>
-            <span className="sr-only">Maxy / ShopIt</span>
+            <span className="sr-only">ShopIt</span>
           </Link>
         </div>
 
@@ -55,13 +61,24 @@ const DesktopNav: React.FC<DesktopNavProps> = ({
             <div className="flex items-center gap-3 ml-2">
               <div className="w-[1px] h-6 bg-[rgba(224,207,207,0.15)]" />
 
-              <button aria-label="camera" className="p-1.5 rounded-md transition-opacity duration-200 hover:opacity-70">
+              <button onClick={() => setOpenImage(true)} aria-label="camera" className="p-1.5 rounded-md transition-opacity duration-200 hover:opacity-70">
                 <img src="/icons/cameraicn.svg" alt="camera" className="w-5 h-5" />
               </button>
 
-              <button aria-label="voice" className="p-1.5 rounded-md transition-opacity duration-200 hover:opacity-70">
+              <button onClick={() => setOpenVoice(true)} aria-label="voice" className="p-1.5 rounded-md transition-opacity duration-200 hover:opacity-70">
                 <img src="/icons/micicn.svg" alt="voice" className="w-5 h-5" />
               </button>
+
+              {/* Modals */}
+      {openImage && (
+        <ImageSearchModal onClose={() => setOpenImage(false)} />
+      )}
+
+      {openVoice && (
+        <VoiceSearchModal onClose={() => setOpenVoice(false)} />
+      )}
+
+              
             </div>
           </div>
 

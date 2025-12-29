@@ -2,6 +2,9 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import ImageSearchModal from "@/app/(main)/components/search/ImageSearchModal";
+import VoiceSearchModal from "@/app/(main)/components/search/VoiceSearchModal";
+
 
 export interface MobileNavProps {
   navStyle?: (visible: boolean) => React.CSSProperties;
@@ -18,6 +21,8 @@ const MobileNav: React.FC<MobileNavProps> = ({
   const searchRef = useRef<HTMLDivElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const [openImage, setOpenImage] = useState(false);
+  const [openVoice, setOpenVoice] = useState(false);
 
   // Close overlays on md+ to avoid stale state
   useEffect(() => {
@@ -197,13 +202,21 @@ const MobileNav: React.FC<MobileNavProps> = ({
     <div className="flex items-center gap-3 ml-2 shrink-0">
       <div className="w-[1px] h-6 bg-[rgba(224,207,207,0.15)]" />
 
-      <button aria-label="camera" className="p-1.5 rounded-md">
+      <button onClick={() => setOpenImage(true)} aria-label="camera" className="p-1.5 rounded-md">
         <img src="/icons/cameraicn.svg" alt="camera" className="w-5 h-5" />
       </button>
 
-      <button aria-label="voice" className="p-1.5 rounded-md">
+      <button onClick={() => setOpenVoice(true)} aria-label="voice" className="p-1.5 rounded-md">
         <img src="/icons/micicn.svg" alt="voice" className="w-5 h-5" />
       </button>
+
+      {openImage && (
+        <ImageSearchModal onClose={() => setOpenImage(false)} />
+      )}
+
+      {openVoice && (
+        <VoiceSearchModal onClose={() => setOpenVoice(false)} />
+      )}
     </div>
   </div>
 
